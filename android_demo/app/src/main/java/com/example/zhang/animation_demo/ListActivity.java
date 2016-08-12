@@ -13,6 +13,7 @@ import java.util.List;
 public class ListActivity extends AppCompatActivity {
     private ListView listview;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,10 @@ public class ListActivity extends AppCompatActivity {
         }
         ArrayAdapter<String>adapter =new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
         listview.setAdapter(adapter);
-//        LayoutAnimationController lac=new LayoutAnimationController.AnimationParameters(AnimationUtils.loadAnimation(this,));
+        //布局动画方法
+       LayoutAnimationController lac=new LayoutAnimationController(AnimationUtils.loadAnimation(this,R.anim.scale));
+        lac.setOrder(LayoutAnimationController.ORDER_RANDOM);
+        listview.setLayoutAnimation(lac);
+        listview.startLayoutAnimation();
     }
 }
